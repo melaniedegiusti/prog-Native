@@ -34,20 +34,25 @@ const styles = StyleSheet.create({
         fontSize:18,
         marginTop:20,
         marginBottom:30,
-        fontWeight: 'bold'
+        fontWeight: 'bold',
+        textAlign: 'center'
     },
     element:{
         marginBottom:10,
+        textAlign: 'center'
     },
     touchable:{
         padding: 10,
         backgroundColor: '#dc3545',
         marginTop: 30,
         borderRadius: 4,
+        width: '40%',
+        textAlign: 'center',
+        marginLeft: 430,
     },
     touchableText:{
         fontWeight: 'bold',
-        color:'#fff',
+        color:'white',
         textAlign: 'center'
     }
     

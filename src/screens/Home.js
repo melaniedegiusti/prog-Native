@@ -1,25 +1,24 @@
-import React, {Component} from 'react'
-import{Text, View, StyleSheet, FlatList} from 'react-native'
+import React, {Component} from 'react';
 import { db } from '../firebase/config'
+import {View, Text, TouchableOpacity, StyleSheet, FlatList, ActivityIndicator, Image} from 'react-native';
+import Post from '../components/Post'
 
-class Home extends Component{
+class Home extends Component {
     constructor(props){
-        super(props);
-        this.State ={
-            posts:[]
+        super(props)
+        this.state = {   
+            posts: []
         }
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.showPost();
     }
 
-    showPost(){
-        db.collection('posteos').onSnapshot((docs)=>{
-            console.log(docs)
+    showPost() {
+        db.collection('posteos').onSnapshot((docs) => {
             let posteos = []
-            docs.forEach((doc)=> {
-                console.log(doc.data())
+            docs.forEach((doc) => {
                 posteos.push({
                     id: doc.id,
                     data: doc.data()
@@ -31,19 +30,20 @@ class Home extends Component{
         })
     }
 
+    
     render(){
         return(
-            <View style={StyleSheet.container}>
+            <View style={styles.container}>
+                <Text> Home </Text>
                 <FlatList 
-                    // data = {this.state.posts}
-                    // keyExtractor = {(post) => post.id}
-                    // renderItem = {({item}) => <Post postData={item} />}
+                    data={this.state.posts}
+                    keyExtractor={(post) => post.id}
+                    renderItem={({item}) => <Post postData={item} />}
                 />
             </View>
-            
-            
-        )
+        )            
     }
+
 }
 
 const styles = StyleSheet.create({

@@ -21,7 +21,7 @@ class NewPostForm extends Component {
             comments: []
         })
             .then(() => {
-                console.log('Se posteo exitosamente');
+                console.log('Posteo realizado!');
                 this.setState({
                     title: '',
                     description: ''
