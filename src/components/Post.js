@@ -85,8 +85,9 @@ class Post extends Component {
                 <Text> {this.props.postData.data.user} </Text>
                 <Text> {this.props.postData.data.title} </Text>
                 <Text> {this.props.postData.data.description} </Text>
+                <Text>Likes: {this.state.likes}</Text>
                 <TouchableOpacity onPress={() => this.openModal()}>
-                    <Text>Likes: {this.state.likes}</Text>
+                    <Text> Ver comentarios</Text>
                 </TouchableOpacity>
                 {
                     ! this.state.liked ?
@@ -99,8 +100,6 @@ class Post extends Component {
                         </TouchableOpacity>
                 }
 
-                {/* MODAL  */}
-                {/* EL condicional lo hacemos solo porque en web no funciona como en una app nativa. La prop visible, por más que esté en falsa, en web nos sigue mostrando el modal. En una app ya compilada, no haría falta y la prop visible funciona perfecto.  */}
                 {
                      this.state.showModal ? 
                         <Modal 
@@ -113,7 +112,8 @@ class Post extends Component {
                             <TouchableOpacity onPress={() => this.closeModal()} style={styles.closeModal}>
                                 <Text>X</Text>
                             </TouchableOpacity>
-                            <Text style={styles.modalText}>Soy un modal</Text>
+                            <Text style={styles.modalText}> Pondriamos los comentarios</Text>
+                            <Text>Posible comentario</Text>
                         </Modal>
                     :
                         null
@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
     },
     modalText:{
         fontWeight: 'bold',
-        color: '#ffffff'
+        color: 'black'
     },
 });
 

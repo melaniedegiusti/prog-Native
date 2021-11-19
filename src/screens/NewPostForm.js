@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { Text, StyleSheet, View, TextInput, TouchableOpacity} from 'react-native'
 import { auth, db } from '../firebase/config';
+import MyCamera from '../components/MyCamera'
 
 class NewPostForm extends Component {
     constructor() {
         super();
         this.state = {
             title: '',
-            description: ''
+            description: '',
+            showCamera: true,
         }
     }
 
@@ -18,7 +20,8 @@ class NewPostForm extends Component {
             title: this.state.title,
             description: this.state.description,
             likes: [],
-            comments: []
+            comments: [],
+            photo: this.state.url,
         })
             .then(() => {
                 console.log('Posteo realizado!');
@@ -31,28 +34,30 @@ class NewPostForm extends Component {
     }
 
     render() {
-        return (
-            <View style={styles.formContainer}>
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Título"
-                    keyboardType="default"
-                    onChangeText={ text => this.setState({ title: text }) }
-                    value={this.state.title}
-                />
-                <TextInput 
-                    style={styles.input}
-                    placeholder="Descripción"
-                    keyboardType="default"
-                    onChangeText={ text => this.setState({ description: text }) }
-                    value={this.state.description}
-                    multiline={true}
-                />
-                <TouchableOpacity style={styles.button} onPress={() => this.submitPost()}>
-                    <Text style={styles.textButton}> Postear </Text>
-                </TouchableOpacity>
-            </View>
-        )
+        return this.state.showCamera ? 
+            ( <MyCamera /> )
+            : (
+                <View style={styles.formContainer}>
+                    <TextInput 
+                        style={styles.input}
+                        placeholder="Título"
+                        keyboardType="default"
+                        onChangeText={ text => this.setState({ title: text }) }
+                        value={this.state.title}
+                    />
+                    <TextInput 
+                        style={styles.input}
+                        placeholder="Descripción"
+                        keyboardType="default"
+                        onChangeText={ text => this.setState({ description: text }) }
+                        value={this.state.description}
+                        multiline={true}
+                    />
+                    <TouchableOpacity style={styles.button} onPress={() => this.submitPost()}>
+                        <Text style={styles.textButton}> Postear </Text>
+                    </TouchableOpacity>
+                </View> 
+            );
     }
 }
 
