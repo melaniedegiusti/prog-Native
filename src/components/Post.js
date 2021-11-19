@@ -82,6 +82,11 @@ class Post extends Component {
     render() {
         return (
             <View style={styles.container}>
+                 {/* <Image 
+                    style={styles.preview}
+                    source={{uri: this.props.postData.data.photo}}
+                    
+                />   */}
                 <Text> {this.props.postData.data.user} </Text>
                 <Text> {this.props.postData.data.title} </Text>
                 <Text> {this.props.postData.data.description} </Text>
@@ -179,6 +184,10 @@ const styles = StyleSheet.create({
     modalText:{
         fontWeight: 'bold',
         color: 'black'
+    },
+    preview: {
+        width: '100%',
+        height: '100%'
     },
 });
 

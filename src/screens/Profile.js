@@ -48,7 +48,8 @@ const styles = StyleSheet.create({
         borderRadius: 4,
         width: '40%',
         textAlign: 'center',
-        marginLeft: 430,
+        marginLeft: 100,
+        
     },
     touchableText:{
         fontWeight: 'bold',

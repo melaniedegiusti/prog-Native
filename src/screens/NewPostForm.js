@@ -10,6 +10,7 @@ class NewPostForm extends Component {
             title: '',
             description: '',
             showCamera: true,
+            url: "",
         }
     }
 
@@ -33,9 +34,16 @@ class NewPostForm extends Component {
             .catch(err => console.log(err))
     }
 
+    onImageUpload(url){
+        this.setState({
+            url: url,
+            showCamera: false,
+        })
+    }
+
     render() {
         return this.state.showCamera ? 
-            ( <MyCamera /> )
+            ( <MyCamera onImageUpload={(url)=> this.onImageUpload(url)}/> )
             : (
                 <View style={styles.formContainer}>
                     <TextInput 
