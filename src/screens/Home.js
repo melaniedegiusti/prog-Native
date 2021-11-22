@@ -29,28 +29,16 @@ class Home extends Component {
             })
         })
     }
-    deletePost(param){
-        db.collection('posts')
-          .where('createdAt', '==', param)
-          .get()
-          .then(data=> {
-            data.forEach(doc=> doc.ref.delete());
-            const postsFiltered = this.state.posts.filter(
-              post=> post.createdAt != param
-            );
-            this.setState({ posts: postsFiltered });
-          });
-      }
 
     
     render(){
         return(
             <View style={styles.container}>
-                <Text> Home </Text>
+                {/* <Text> Home </Text> */}
                 <FlatList 
                     data={this.state.posts}
                     keyExtractor={(post) => post.id}
-                    renderItem={({item}) => <Post postData={item} deletePost={createdAt=> this.deletePost(createdAt)}/>}
+                    renderItem={({item}) => <Post postData={item} />}
                 />
             </View>
         )            

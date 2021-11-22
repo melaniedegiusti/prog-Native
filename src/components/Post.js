@@ -79,15 +79,20 @@ class Post extends Component {
             showModal: false
         })
     }
-
+    deletePost(){
+        db.collection("posteos").doc(this.props.postData.id).delete()
+        .then(()=> {
+            console.log("eliminado")
+        })
+    }
     
     render() {
         return (
             <View style={styles.container}>
                 {this.props.postData.data.user == auth.currentUser.email ? (
                 <TouchableOpacity
-                    onPress={()=>
-                        this.props.deletePost(this.props.createdAt)
+                    onPress={(id)=>
+                        {this.deletePost(this.props.postData.id)}
                     }
                     style={styles.delete}
                 > X
