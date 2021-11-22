@@ -4,9 +4,11 @@ import {
     View, 
     TextInput, 
     TouchableOpacity, 
-    StyleSheet
+    StyleSheet,
+    Image
 } from 'react-native'
 import {auth} from '../firebase/config'
+import Register from './Register';
 
 class Login extends Component{
     constructor(props){
@@ -21,7 +23,11 @@ class Login extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
-            <Text>Login</Text>
+            <Text style={styles.login}>Login</Text>
+            <Image 
+                style={styles.foto}
+                source={require('../../assets/login.png')}
+            />
             <TextInput
                 style={styles.input}
                 onChangeText={(text)=>this.setState({email: text})}
@@ -35,6 +41,10 @@ class Login extends Component{
                 secureTextEntry={true}
             />
             <Text style={styles.error}>{this.props.errorMessage}</Text>
+
+            <Text style={{color: 'blue'}} onPress={ <Register />}>
+                Google
+            </Text>
             <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
                 <Text style={styles.textButton}>Ingresar</Text>    
             </TouchableOpacity>
@@ -74,6 +84,17 @@ const styles= StyleSheet.create({
     },
     textButton:{
         color: '#fff'
+    },
+    foto:{
+        width: '60%',
+        height: 200,
+        borderRadius: 10,
+        alignSelf: 'center',
+    },
+    login:{
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignSelf: 'center',
     }
 
 })

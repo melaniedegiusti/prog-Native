@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, Modal, TouchableOpacity, Image } from 'react-native'
 import { auth, db } from '../firebase/config'
 import firebase from 'firebase'
+import Comments from './Comments';
 
 class Post extends Component {
     constructor(props) {
@@ -78,21 +79,31 @@ class Post extends Component {
             showModal: false
         })
     }
+
     
     render() {
         return (
             <View style={styles.container}>
+                {this.props.postData.data.user == auth.currentUser.email ? (
+                <TouchableOpacity
+                    onPress={()=>
+                        this.props.deletePost(this.props.createdAt)
+                    }
+                    style={styles.delete}
+                > X
+                </TouchableOpacity>
+                )
+                : null
+                }
+                <Text style={styles.user}> {this.props.postData.data.user} </Text>
                  <Image 
                     style={styles.preview}
                     source={this.props.postData.data.photo}
-                />  
-                <Text> {this.props.postData.data.user} </Text>
-                <Text> {this.props.postData.data.title} </Text>
-                <Text> {this.props.postData.data.description} </Text>
-                <Text>Likes: {this.state.likes}</Text>
-                <TouchableOpacity onPress={() => this.openModal()}>
-                    <Text> Ver comentarios</Text>
-                </TouchableOpacity>
+                /> 
+                <Text style={styles.title}> {this.props.postData.data.title} </Text>
+                <Text style={styles.desc}> {this.props.postData.data.description} </Text>
+                <Text style={styles.likes}> {this.state.likes} Likes</Text>
+                
                 {
                     ! this.state.liked ?
                         <TouchableOpacity style={styles.button} onPress={() => this.likePost()}>
@@ -103,6 +114,9 @@ class Post extends Component {
                             <Text style={styles.textButton}>Unlike</Text>
                         </TouchableOpacity>
                 }
+                <TouchableOpacity onPress={() => this.openModal() }>
+                    <Text style={styles.comentarios}> Ver comentarios</Text>
+                </TouchableOpacity>
 
                 {
                      this.state.showModal ? 
@@ -112,12 +126,15 @@ class Post extends Component {
                             animationType="slide"
                             transparent={false}
                         >
-                            {/* Pueden hacer un componente aparte para el modal. En el caso de los comentarios, si hacen un componente CommentsModal, le querrían pasar mediante props el array de comentarios.  */}
+                            <View style={styles.modalView}>
                             <TouchableOpacity onPress={() => this.closeModal()} style={styles.closeModal}>
                                 <Text>X</Text>
                             </TouchableOpacity>
-                            <Text style={styles.modalText}> Pondriamos los comentarios</Text>
-                            <Text>Posible comentario</Text>
+                            <Comments
+                                comments={this.props.postData.data.comments}
+                                postId={this.props.postData.id}
+                            />
+                            </View>
                         </Modal>
                     :
                         null
@@ -164,14 +181,9 @@ const styles = StyleSheet.create({
         color: "#fff",
     },
     modalContainer: {
-        width:'100%',  
-        flex: 3,
-        alignSelf: 'center',
-        backgroundColor: "white",
-        borderColor: '#000000',
-        borderRadius: 6,
-        padding: 10,
-        backgroundColor: '#000000'
+        border: 'none',
+        width: '100%',
+
     },
     closeModal:{
         alignSelf: 'flex-end',
@@ -184,10 +196,51 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         color: 'black'
     },
+    modalView:{
+        backgroundColor: 'lightblue',
+        borderRadius: 4,
+        padding: 4,
+    },
     preview: {
         width: '100%',
-        height: '100%'
+        height: 500,
+        borderRadius: 10,
     },
+    delete:{
+        fontFamily: 'Arial',
+        color: 'white',
+        textAlign: 'center',
+        backgroundColor: '#dc3545',
+        borderRadius: 8,
+        margin: 8,
+        padding: 4,
+        width: '10%',
+        alignSelf: 'flex-end',
+    },
+    user:{
+        color: 'black',
+        margin: 4,
+        fontWeight: 'bold',
+        alignSelf: 'flex-start',
+        margin: 10,
+        marginLeft: 15,
+        fontSize: 17,
+    },
+    comentarios: {
+        alignSelf: 'flex-start',
+        margin: 10,
+    },
+    title:{
+        fontWeight: 'bold',
+        margin: 5,
+    },
+    desc:{
+
+    },
+    likes:{
+        marginTop: 5,
+        marginBottom: 2,
+    }
 });
 
 export default Post

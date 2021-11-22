@@ -22,7 +22,7 @@ class Register extends Component{
     render(){
         return(
             <View style={styles.formContainer}>
-                <Text>Register</Text>
+                <Text style={styles.register}>Register</Text>
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({email: text})}
@@ -76,6 +76,11 @@ const styles= StyleSheet.create({
     },
     textButton:{
         color: '#fff'
+    },
+    register:{
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignSelf: 'center',
     }
 
 })
