@@ -38,7 +38,7 @@ class Register extends Component{
                 />
                 <Text style={styles.error}>{this.props.errorMessage}</Text>
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}>
-                    <Text style={styles.textButton}>Registrarse</Text>    
+                    <Text style={styles.textButton}>Registrarme</Text>    
                 </TouchableOpacity>
             </View>
         )
@@ -65,14 +65,14 @@ const styles= StyleSheet.create({
         fontSize: 12
     },
     button:{
-        backgroundColor:'#28a745',
+        backgroundColor:'#339CFF',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#339CFF'
     },
     textButton:{
         color: '#fff'

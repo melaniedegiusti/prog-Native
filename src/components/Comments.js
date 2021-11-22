@@ -49,7 +49,7 @@ class Comments extends Component {
                     )}
                     />
                 ) : (
-                <Text style={styles.noHay}>Aún no hay comentarios. Sé el primero!</Text>
+                <Text >Aún no hay comentarios. Sé el primero!</Text>
                 )}
 
                 <TextInput
@@ -62,7 +62,7 @@ class Comments extends Component {
                 style={styles.placeholder}
                 />
                 <TouchableOpacity style={styles.post} onPress={() => this.onComment()}>
-                    <Text style={styles.post}>Post</Text>
+                    <Text style={styles.post2}>Post</Text>
                 </TouchableOpacity>
             </View>
         );
@@ -75,16 +75,27 @@ const styles= StyleSheet.create({
     },
 
     post:{
-        backgroundColor: "salmon",
+        backgroundColor: "#2ECC71",
+        padding: 4,
+        margin: 2,
+        borderRadius: 4,
+    },
+    post2:{
+        color: 'white',
         padding: 4,
         margin: 2,
         borderRadius: 4,
     },
 
     placeholder:{
-        backgroundColor: 'white',
-        borderRadius: 4,
+        shadowColor: "#ccc",
         margin: 5,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderStyle: "solid",
+        borderColor: "#ccc",
+        padding: 4,
+        
     },
     
 });

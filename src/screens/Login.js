@@ -73,14 +73,14 @@ const styles= StyleSheet.create({
         fontSize: 12
     },
     button:{
-        backgroundColor:'#28a745',
+        backgroundColor:'#339CFF',
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: 'center',
         borderRadius:4, 
         borderWidth:1,
         borderStyle: 'solid',
-        borderColor: '#28a745'
+        borderColor: '#339CFF'
     },
     textButton:{
         color: '#fff'

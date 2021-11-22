@@ -42,14 +42,14 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     },
     touchable:{
-        padding: 10,
-        backgroundColor: '#dc3545',
-        marginTop: 30,
-        borderRadius: 4,
-        width: '40%',
+        backgroundColor:'#dc3545',
+        paddingHorizontal: 10,
+        paddingVertical: 6,
         textAlign: 'center',
-        marginLeft: 100,
-        
+        borderRadius:4, 
+        borderWidth:1,
+        borderStyle: 'solid',
+        borderColor: '#dc3545'
     },
     touchableText:{
         fontWeight: 'bold',

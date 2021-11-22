@@ -158,14 +158,14 @@ const styles = StyleSheet.create({
         borderRadius: 5,
     },
     button: {
-        backgroundColor: "#28a745",
+        backgroundColor: "#2ECC71",
         paddingHorizontal: 10,
         paddingVertical: 6,
         textAlign: "center",
         borderRadius: 4,
         borderWidth: 1,
         borderStyle: "solid",
-        borderColor: "#28a745",
+        borderColor: "#2ECC71",
     },
     button2: {
         backgroundColor: '#dc3545',
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
         color: 'black'
     },
     modalView:{
-        backgroundColor: 'lightblue',
+        backgroundColor: 'white',
         borderRadius: 4,
         padding: 4,
     },

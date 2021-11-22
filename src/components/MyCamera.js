@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Text, View, TouchableOpacity, Image} from "react-native";
+import {Text, View, TouchableOpacity, Image, StyleSheet} from "react-native";
 import { Camera } from "expo-camera";
 import {storage} from '../firebase/config'
 
@@ -57,6 +57,11 @@ class MyCamera extends Component{
                 })
             .catch((err)=>console.log(err))
     }
+    rejectPhoto(){
+        this.setState({
+            photo: ''
+        })
+    }
 
     render(){
         return (
@@ -67,12 +72,12 @@ class MyCamera extends Component{
                         style={{flex:1, width: "100%"}}
                         source={{uri: this.state.photo}}
                     />
-                    <View>
-                        <TouchableOpacity onPress={()=> this.savePhoto()}>
-                            <Text>Aceptar</Text>
+                    <View style={styles.btnContainer}>
+                        <TouchableOpacity style={styles.accept} onPress={()=> this.savePhoto()}>
+                            <Text style={styles.text}>Aceptar</Text>
                         </TouchableOpacity>
-                        <TouchableOpacity>
-                            <Text>Cancelar</Text>
+                        <TouchableOpacity style={styles.reject} onPress={()=> this.rejectPhoto()}>
+                            <Text style={styles.text}>Cancelar</Text>
                         </TouchableOpacity>
                     </View>
                 </>
@@ -84,7 +89,7 @@ class MyCamera extends Component{
                     ref={(cam)=>(this.camera = cam)}
                 />
                 <TouchableOpacity onPress={() => this.shoot()}>
-                    <Text> Shoot </Text>
+                    <Text style={styles.shoot}> Shoot </Text>
                 </TouchableOpacity>
                 </>
 
@@ -93,5 +98,42 @@ class MyCamera extends Component{
         )
     }
 }
+const styles = StyleSheet.create({
+    shoot:{
+        fontWeight: 'bold',
+        fontSize: 30,
+        alignSelf: 'center',
+        margin: 20,
+    },
+    accept: {
+        width: 100,
+        height: 50,
+        backgroundColor: "#28a745",
+        borderRadius: 50,
+        // margin: 10,
+    },
+    reject: {
+        width: 100,
+        height: 50,
+        backgroundColor: '#FF392B',
+        borderRadius: 50,
+        // margin: 10,
+    },
+    text: {
+        width: '100%',
+        textAlign: 'center',
+        color: 'white',
+        paddingTop: 15
+    },
+    btnContainer: {
+        flex: 1,
+        backgroundColor: 'white',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        width: '100%',
+    },
+
+})
 
 export default MyCamera;
