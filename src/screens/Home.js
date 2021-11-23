@@ -7,7 +7,8 @@ class Home extends Component {
     constructor(props){
         super(props)
         this.state = {   
-            posts: []
+            posts: [],
+            isLoading: true,
         }
     }
 
@@ -25,7 +26,8 @@ class Home extends Component {
                 })
             })
             this.setState({
-                posts: posteos
+                posts: posteos,
+                isLoading: false
             })
         })
     }
@@ -33,14 +35,31 @@ class Home extends Component {
     
     render(){
         return(
-            <View style={styles.container}>
-                {/* <Text> Home </Text> */}
+            // <View style={styles.container}>
+            this.state.isLoading ?
+            (
+                    <ActivityIndicator 
+                    size='large'
+                    color="blue"
+                />
+            ) : ( 
+                <View style={styles.container}>
                 <FlatList 
                     data={this.state.posts}
                     keyExtractor={(post) => post.id}
                     renderItem={({item}) => <Post postData={item} />}
                 />
             </View>
+            )
+                
+
+
+            //     <FlatList 
+            //         data={this.state.posts}
+            //         keyExtractor={(post) => post.id}
+            //         renderItem={({item}) => <Post postData={item} />}
+            //     />
+            // </View>
         )            
     }
 

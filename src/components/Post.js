@@ -89,7 +89,7 @@ class Post extends Component {
     render() {
         return (
             <View style={styles.container}>
-                {this.props.postData.data.email == auth.currentUser.email ? (
+                {this.props.postData.data.user == auth.currentUser.displayName ? (
                 <TouchableOpacity
                     onPress={(id)=>
                         {this.deletePost(this.props.postData.id)}
