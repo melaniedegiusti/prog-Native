@@ -42,11 +42,11 @@ class Login extends Component{
             />
             <Text style={styles.error}>{this.props.errorMessage}</Text>
 
-            <Text style={{color: 'blue'}} onPress={ <Register />}>
+            {/* <Text style={{color: 'blue'}} onPress={ <Register />}>
                 Google
-            </Text>
+            </Text> */}
             <TouchableOpacity style={styles.button} onPress={()=>this.props.login(this.state.email, this.state.password)}>
-                <Text style={styles.textButton}>Ingresar</Text>    
+                <Text style={styles.textButton}>Login</Text>    
             </TouchableOpacity>
             </View>
         )

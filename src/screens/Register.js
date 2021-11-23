@@ -24,21 +24,27 @@ class Register extends Component{
             <View style={styles.formContainer}>
                 <Text style={styles.register}>Register</Text>
                 <TextInput
+                    style= {styles.input}
+                    keyboardType= 'default'
+                    placeholder= 'Username'
+                    onChangeText={text => this.setState({ userName: text })}
+                />
+                <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({email: text})}
-                    placeholder='email'
+                    placeholder='Email'
                     keyboardType='email-address'
                     />
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({password: text})}
-                    placeholder='password'
+                    placeholder='Password'
                     keyboardType='default'
                     secureTextEntry={true}
                 />
                 <Text style={styles.error}>{this.props.errorMessage}</Text>
                 <TouchableOpacity style={styles.button} onPress={()=>this.props.register(this.state.email, this.state.password)}>
-                    <Text style={styles.textButton}>Registrarme</Text>    
+                    <Text style={styles.textButton}>Sign Up</Text>    
                 </TouchableOpacity>
             </View>
         )

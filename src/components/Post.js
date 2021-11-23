@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Text, StyleSheet, View, Modal, TouchableOpacity, Image } from 'react-native'
 import { auth, db } from '../firebase/config'
 import firebase from 'firebase'
-import Comments from './Comments';
+import Comments from '../components/Comments';
 
 class Post extends Component {
     constructor(props) {

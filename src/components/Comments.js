@@ -13,7 +13,7 @@ class Comments extends Component {
     }
 
     onComment(){
-        const post = db.collection("posteos").doc(this.props.postData.id);
+        const post = db.collection("posteos").doc(this.props.postId);
         if(this.state.comment == ''){
             alert('Por favor, escribí un comentario.')
         } else {
