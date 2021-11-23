@@ -21,7 +21,7 @@ class Comments extends Component {
                 comments: firebase.firestore.FieldValue.arrayUnion({
                     id: Date.now(),
                     email: auth.currentUser.email,
-                    // owner: auth.currentUser.displayName,
+                    user: auth.currentUser.displayName,
                     comment: this.state.comment,
                 }),
             })
@@ -43,7 +43,7 @@ class Comments extends Component {
                     renderItem={({ item })=>(
                         <>
                         <Text>
-                            {item.email}: {item.comment}
+                            {item.user}: {item.comment}
                         </Text>
                         </>
                     )}
