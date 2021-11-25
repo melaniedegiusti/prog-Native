@@ -34,7 +34,7 @@ class Register extends Component{
                     onChangeText={(text)=>this.setState({email: text})}
                     placeholder='Email'
                     keyboardType='email-address'
-                    />
+                />
                 <TextInput
                     style={styles.input}
                     onChangeText={(text)=>this.setState({password: text})}

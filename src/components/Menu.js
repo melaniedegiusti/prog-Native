@@ -57,7 +57,6 @@ class Menu extends Component {
          auth.signInWithEmailAndPassword(email, password)
          .then( (response)=>{
             console.log('Usuario Logueado');
-            console.log(response);
             this.setState({
                 loggedIn: true,
                 userData: response.user,
@@ -72,7 +71,7 @@ class Menu extends Component {
         })
 }    
 
-      logout(){
+    logout(){
           auth.signOut()
     }
 

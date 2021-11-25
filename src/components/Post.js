@@ -132,13 +132,13 @@ class Post extends Component {
                             transparent={false}
                         >
                             <View style={styles.modalView}>
-                            <TouchableOpacity onPress={() => this.closeModal()} style={styles.closeModal}>
-                                <Text>X</Text>
-                            </TouchableOpacity>
-                            <Comments
-                                comments={this.props.postData.data.comments}
-                                postId={this.props.postData.id}
-                            />
+                                <TouchableOpacity onPress={() => this.closeModal()} style={styles.closeModal}>
+                                    <Text>X</Text>
+                                </TouchableOpacity>
+                                <Comments
+                                    comments={this.props.postData.data.comments}
+                                    postId={this.props.postData.id}
+                                />
                             </View>
                         </Modal>
                     :

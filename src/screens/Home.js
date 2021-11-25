@@ -35,7 +35,7 @@ class Home extends Component {
     
     render(){
         return(
-            // <View style={styles.container}>
+            
             this.state.isLoading ?
             (
                     <ActivityIndicator 
@@ -52,14 +52,6 @@ class Home extends Component {
             </View>
             )
                 
-
-
-            //     <FlatList 
-            //         data={this.state.posts}
-            //         keyExtractor={(post) => post.id}
-            //         renderItem={({item}) => <Post postData={item} />}
-            //     />
-            // </View>
         )            
     }
 
